@@ -39,6 +39,7 @@ app.use('/v1', route);
 
 route.post('/send-email', (req, res) => {
     const { recipient, subject, text } = req.body;
+    console.log(req.body)
     const mailOptions = {
         from: process.env.SMTP_MAIL,
         to: recipient,
