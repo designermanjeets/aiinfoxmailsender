@@ -44,7 +44,7 @@ route.post('/send-email', (req, res) => {
         to: recipient,
         subject: subject,
         text: text,
-        html: "<b>Hello world?</b>", // html body
+        html: text, // html body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
