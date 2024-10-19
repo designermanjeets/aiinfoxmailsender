@@ -24,6 +24,7 @@
   "homepage": "https://github.com/designermanjeets/aiinfoxmailsender#readme",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "nodemailer": "^6.9.15"

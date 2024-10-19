@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const app = express();
+const cors = require('cors');
+
+app.use(cors({ origin: 'https://aiinfox.com' })); // allow only aiinfox.com to access the API
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const route = express.Router();
