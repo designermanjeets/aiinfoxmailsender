@@ -57,11 +57,11 @@ route.post('/send-email', (req, res) => {
 });
 
 route.post('/payment-response', (req, res) => {
-    return res.status(200).json({ error: {}, res: res, text: 'Payment Success' });
+    res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
 });
 
 route.get('/payment-success', (req, res) => {
-    return res.status(200).json({ error: {}, res: res, text: 'Payment Success' });
+    res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
 });
 
 
