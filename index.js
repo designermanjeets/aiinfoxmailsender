@@ -56,6 +56,14 @@ route.post('/send-email', (req, res) => {
     });
 });
 
+route.post('/payment-response', (req, res) => {
+    res.redirect('/payment-success');
+});
+
+app.get('/payment-success', (req, res) => {
+    res.status(200).json({ error: {}, res: res, text: 'Payment Success' });
+});
+
 
 
 app.listen(port, () => {
