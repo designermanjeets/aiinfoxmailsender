@@ -55,9 +55,8 @@ route.post('/send-email', (req, res) => {
         res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
     });
 });
-route.post('/send-success', (req, res) => {
-    const { recipient, subject, text } = req.body;
-    res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
+route.post('/send-success', async (req, res) => {
+    res.status(200).json({ success: true, message: 'Email sent: '});
 });
 
 
