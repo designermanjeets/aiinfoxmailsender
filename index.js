@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const app = express();
 const cors = require('cors');
+const cron = require('node-cron');
+const axios = require('axios');
 
 const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200'];
 app.use(cors({
@@ -55,12 +57,13 @@ route.post('/send-email', (req, res) => {
         res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
     });
 });
-route.post('/send-success', async (req, res) => {
+
+cron.schedule('*/1 * * * *', async () => { // Runs every 1 minute
     try {
         const response = await axios.get('https://api.fashioncarft.com/public/api/payment-response');
-        res.json(response.data); // Send data to Angular
+        console.log('Scheduled Payment Check:', response.data);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch payment status' });
+        console.error('Error fetching payment status:', error.message);
     }
 });
 
