@@ -57,7 +57,7 @@ route.post('/send-email', (req, res) => {
 });
 
 route.post('/payment-response', (req, res) => {
-    res.redirect('/payment-success');
+    res.redirect('/v1/payment-success');
 });
 
 route.get('/payment-success', (req, res) => {
