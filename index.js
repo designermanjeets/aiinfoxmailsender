@@ -56,7 +56,7 @@ route.post('/send-email', (req, res) => {
     });
 });
 route.post('/send-success', async (req, res) => {
-    res.status(200).json({ success: true, message: 'Email sent: '});
+    res.status(200).json({ success: true, message: 'Email sent: ', res: res});
 });
 
 
