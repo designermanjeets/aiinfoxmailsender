@@ -57,21 +57,7 @@ route.post('/send-email', (req, res) => {
 });
 route.post('/send-success', (req, res) => {
     const { recipient, subject, text } = req.body;
-    console.log(req.body)
-    const mailOptions = {
-        from: process.env.SMTP_MAIL,
-        to: recipient,
-        subject: subject,
-        text: text,
-        html: text, // html body
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).json({ error: error.message, text: 'Error in Sending Email' });
-        }
-        res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
-    });
+    res.status(200).json({ error: {}, text: 'Email sent: ' + info.response });
 });
 
 
