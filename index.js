@@ -60,7 +60,7 @@ route.post('/payment-response', (req, res) => {
     res.redirect('/payment-success');
 });
 
-app.get('/payment-success', (req, res) => {
+route.get('/payment-success', (req, res) => {
     res.status(200).json({ error: {}, res: res, text: 'Payment Success' });
 });
 
