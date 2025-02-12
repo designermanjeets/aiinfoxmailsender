@@ -56,7 +56,12 @@ route.post('/send-email', (req, res) => {
     });
 });
 route.post('/send-success', async (req, res) => {
-    res.status(200).json({ success: true, message: 'Success Payment '});
+    try {
+        const response = await axios.get('https://api.fashioncarft.com/public/api/payment-response');
+        res.json(response.data); // Send data to Angular
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch payment status' });
+    }
 });
 
 
