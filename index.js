@@ -58,14 +58,14 @@ route.post('/send-email', (req, res) => {
     });
 });
 
-cron.schedule('*/1 * * * *', async () => { // Runs every 1 minute
-    try {
-        const response = await axios.get('https://api.fashioncarft.com/public/api/payment-response');
-        console.log('Scheduled Payment Check:', response.data);
-    } catch (error) {
-        console.error('Error fetching payment status:', error.message);
-    }
-});
+// cron.schedule('*/1 * * * *', async () => { // Runs every 1 minute
+//     try {
+//         const response = await axios.get('https://api.fashioncarft.com/public/api/payment-response');
+//         console.log('Scheduled Payment Check:', response.data);
+//     } catch (error) {
+//         console.error('Error fetching payment status:', error.message);
+//     }
+// });
 
 
 
