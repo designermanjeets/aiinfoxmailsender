@@ -6,7 +6,7 @@ const cors = require('cors');
 const cron = require('node-cron');
 const axios = require('axios');
 
-const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'http://localhost:5173'];
+const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'https://aiinfoxtech-livid.vercel.app', 'https://www.aiinfoxtech.com/', 'http://localhost:5173'];
 app.use(cors({
     origin: function(origin, callback){
         // allow requests with no origin (like mobile apps or curl requests)
