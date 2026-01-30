@@ -39,6 +39,10 @@ const transporter = nodemailer.createTransport({
 
 app.use('/v1', route);
 
+// Omnisend REST API routes (separate from mailer)
+const omnisendRoutes = require('./omnisend.routes');
+app.use('/v1/omnisend', omnisendRoutes);
+
 route.post('/send-email', (req, res) => {
     const { recipient, subject, text } = req.body;
     console.log(req.body)
