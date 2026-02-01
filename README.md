@@ -102,12 +102,13 @@ Allowed origins:
 - `https://aiinfoxtech-livid.vercel.app`
 - `https://www.gajaro.com`
 - `https://www.gajmailbox.com`
+- `https://www.ppcopilot.com`
 - `http://localhost:4200`
 - `http://localhost:5173`
 
 Requests with no origin (curl, mobile apps) are allowed.
 
-**Note:** Your Aiinfox mailer server's CORS config currently allows localhost:5173. You'll need to add your production domain (e.g., https://www.gajaro.com and https://www.gajmailbox.com) to the allowedOrigins array on the server for production to work.
+**Note:** Your Aiinfox mailer server's CORS config currently allows localhost:5173. You'll need to add your production domain (e.g., https://www.gajaro.com, https://www.gajmailbox.com, and https://www.ppcopilot.com) to the allowedOrigins array on the server for production to work.
 
 ## Environment Variables
 
