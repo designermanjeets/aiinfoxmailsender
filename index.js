@@ -125,7 +125,7 @@ const omnisendRoutes = require('./omnisend.routes');
 app.use('/v1/omnisend', omnisendRoutes);
 
 // Origins that require reCAPTCHA verification
-const recaptchaOrigins = ['https://aiinfox.com', 'http://localhost:4200'];
+const recaptchaOrigins = ['https://aiinfox.com', 'https://aiinfoxtech.com', 'https://www.aiinfoxtech.com', 'http://localhost:4200', 'http://localhost:5173'];
 
 async function verifyRecaptcha(token) {
     const secret = process.env.RECAPTCHA_SECRET;
