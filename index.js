@@ -124,9 +124,42 @@ app.use('/v1', route);
 const omnisendRoutes = require('./omnisend.routes');
 app.use('/v1/omnisend', omnisendRoutes);
 
-route.post('/send-email', (req, res) => {
-    const { recipient, subject, text } = req.body;
-    console.log(req.body)
+// Origins that require reCAPTCHA verification
+const recaptchaOrigins = ['https://aiinfox.com', 'http://localhost:4200'];
+
+async function verifyRecaptcha(token) {
+    const secret = process.env.RECAPTCHA_SECRET;
+    const response = await axios.post(
+        'https://www.google.com/recaptcha/api/siteverify',
+        null,
+        { params: { secret, response: token } }
+    );
+    return response.data;
+}
+
+route.post('/send-email', async (req, res) => {
+    const { recipient, subject, text, recaptchaToken } = req.body;
+    const origin = req.get('origin') || '';
+    console.log(req.body);
+
+    // Verify reCAPTCHA only for aiinfox.com origins
+    if (recaptchaOrigins.includes(origin)) {
+        if (!recaptchaToken) {
+            return res.status(400).json({ error: 'reCAPTCHA token missing', text: 'Spam verification failed' });
+        }
+        try {
+            const captchaResult = await verifyRecaptcha(recaptchaToken);
+            if (!captchaResult.success || captchaResult.score < 0.5) {
+                console.log('reCAPTCHA failed:', captchaResult);
+                return res.status(403).json({ error: 'reCAPTCHA verification failed', text: 'Spam verification failed' });
+            }
+            console.log('reCAPTCHA passed, score:', captchaResult.score);
+        } catch (err) {
+            console.error('reCAPTCHA verification error:', err.message);
+            return res.status(500).json({ error: 'reCAPTCHA verification error', text: 'Spam verification failed' });
+        }
+    }
+
     const mailOptions = {
         from: process.env.SMTP_MAIL,
         to: recipient,
