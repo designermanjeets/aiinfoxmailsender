@@ -6,7 +6,7 @@ const cors = require('cors');
 const cron = require('node-cron');
 const axios = require('axios');
 
-const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'https://aiinfoxtech-livid.vercel.app', 'https://www.aiinfoxtech.com', 'https://www.gajaro.com', 'https://www.gajmailbox.com', 'https://www.ppcopilot.com', 'http://localhost:5173'];
+const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'https://aiinfoxtech-livid.vercel.app', 'https://www.aiinfoxtech.com', 'https://www.gajaro.com', 'https://www.gajmailbox.com', 'https://www.ppcopilot.com', 'http://localhost:5173', 'https://www.aiinfoxacademy.com'];
 app.use(cors({
     origin: function(origin, callback){
         // allow requests with no origin (like mobile apps or curl requests)
@@ -125,7 +125,7 @@ const omnisendRoutes = require('./omnisend.routes');
 app.use('/v1/omnisend', omnisendRoutes);
 
 // Origins that require reCAPTCHA verification
-const recaptchaOrigins = ['https://aiinfox.com', 'https://aiinfoxtech.com', 'https://www.aiinfoxtech.com', 'http://localhost:4200', 'http://localhost:5173'];
+const recaptchaOrigins = ['https://aiinfox.com', 'https://aiinfoxtech.com', 'https://www.aiinfoxtech.com', 'http://localhost:4200', 'http://localhost:5173', 'https://www.aiinfoxacademy.com'];
 
 async function verifyRecaptcha(token) {
     const secret = process.env.RECAPTCHA_SECRET;
