@@ -6,7 +6,7 @@ const cors = require('cors');
 const cron = require('node-cron');
 const axios = require('axios');
 
-const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'https://aiinfoxtech-livid.vercel.app', 'https://www.aiinfoxtech.com', 'https://www.gajaro.com', 'https://www.gajmailbox.com', 'https://www.ppcopilot.com', 'http://localhost:5173', 'https://www.aiinfoxacademy.com'];
+const allowedOrigins = ['https://aiinfox.com', 'http://localhost:4200','https://aiinfoxtech.com', 'https://aiinfoxtech-livid.vercel.app', 'https://www.aiinfoxtech.com', 'https://www.gajaro.com', 'https://www.gajmailbox.com', 'https://www.ppcopilot.com', 'http://localhost:5173', 'https://www.aiinfoxacademy.com', 'https://www.ctorail.com', 'https://ctorail.com'];
 app.use(cors({
     origin: function(origin, callback){
         // allow requests with no origin (like mobile apps or curl requests)
